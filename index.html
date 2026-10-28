@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DEVELOP • Control Panel</title>
+<style>
+:root{--bg:#0b0d12;--panel:#121620;--panel2:#171c28;--line:#262d3b;--text:#f2f5fb;--muted:#929bad;--accent:#6d5dfc;--cyan:#40d9d0;--good:#57d6a0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#292054 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{background:#0d1017;border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:26px}.brand{display:flex;gap:11px;align-items:center;font-weight:850;letter-spacing:.5px}.logo{height:39px;width:39px;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--cyan));display:grid;place-items:center;font-weight:900;color:white}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px}.navlabel{color:#677084;text-transform:uppercase;font-size:10px;letter-spacing:1.8px;padding:0 12px;margin-bottom:7px}.nav{display:grid;gap:5px}.nav button{background:transparent;border:0;color:#aab2c3;padding:11px 12px;border-radius:10px;text-align:left;display:flex;gap:11px;align-items:center}.nav button.active,.nav button:hover{background:#211f3c;color:#fff}.nav button.active{box-shadow:inset 3px 0 var(--accent)}.sidebottom{margin-top:auto;border:1px solid var(--line);background:var(--panel);padding:13px;border-radius:13px}.tiny{font-size:12px;color:var(--muted)}main{min-width:0;padding:28px clamp(18px,4vw,48px)}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:32px}.crumb{color:var(--muted);font-size:13px}.profile{display:flex;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:7px 12px;border-radius:12px}.avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#765dff,#31cfc4);display:grid;place-items:center;font-weight:800}.h1{font-size:clamp(25px,3vw,35px);letter-spacing:-1px;margin:0 0 5px}.sub{color:var(--muted);margin:0 0 25px}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:10px 14px;border-radius:10px;font-weight:650}.btn.primary{border:0;background:linear-gradient(135deg,#6d5dfc,#4e47c8);box-shadow:0 8px 24px #5145dc35}.btn:focus,input:focus,select:focus,textarea:focus{outline:2px solid #6d5dfc;outline-offset:2px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:linear-gradient(180deg,#151a25,#11151e);border:1px solid var(--line);border-radius:16px;padding:19px;min-width:0}.stat{display:flex;justify-content:space-between;align-items:start}.stat .icon{width:38px;height:38px;border-radius:12px;background:#242044;display:grid;place-items:center;font-size:18px}.stat .num{font-size:27px;font-weight:800;margin-top:10px}.stat .label{color:var(--muted);font-size:13px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:26px 0 13px;gap:12px}.sectionhead h2{font-size:17px;margin:0}.server{display:flex;align-items:center;gap:13px}.servericon{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#3c2f79,#197c81);display:grid;place-items:center;font-size:22px}.server h3{margin:0;font-size:15px}.server p{margin:2px 0 0;color:var(--muted);font-size:12px}.status{color:var(--good);font-size:12px}.feature{display:flex;gap:13px;align-items:start}.featureicon{flex:0 0 42px;height:42px;border-radius:12px;background:#20263a;display:grid;place-items:center;font-size:19px}.feature h3{margin:0 0 4px;font-size:15px}.feature p{margin:0;color:var(--muted);font-size:13px}.feature .btn{margin-top:13px;font-size:12px;padding:7px 10px}.rowcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.setting{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}.setting:last-child{border-bottom:0}.setting strong{display:block;font-size:14px}.setting span{color:var(--muted);font-size:12px}.switch{width:44px;height:25px;background:#353c4b;border-radius:99px;padding:3px;border:0;flex-shrink:0}.switch:after{content:"";display:block;width:19px;height:19px;background:white;border-radius:50%;transition:.2s}.switch.on{background:#5b50e8}.switch.on:after{transform:translateX(19px)}.field{display:grid;gap:7px;margin:16px 0}.field label{font-size:13px;color:#cbd2df}.field input,.field select,.field textarea{width:100%;background:#0c1018;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:11px 12px}.field textarea{min-height:95px;resize:vertical}.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #2a3542;background:#17241f;color:var(--good);padding:4px 8px;border-radius:99px;font-size:11px}.notice{border:1px solid #4b3c74;background:#211b37;color:#d8d1ff;padding:12px 14px;border-radius:12px;font-size:13px;margin-bottom:20px}.page{display:none}.page.active{display:block}.login{max-width:520px;margin:7vh auto;background:#121620;border:1px solid var(--line);border-radius:22px;padding:clamp(24px,5vw,44px);text-align:center}.login .logo{margin:0 auto 16px;width:60px;height:60px;font-size:22px}.login h1{font-size:30px;margin:0 0 8px}.login p{color:var(--muted)}.login .btn{width:100%;margin-top:14px}.footer{color:#697386;font-size:11px;margin-top:28px}.toast{position:fixed;bottom:20px;right:20px;background:#19271f;border:1px solid #315c48;padding:12px 16px;border-radius:12px;display:none;z-index:10}
+@media(max-width:900px){.app{grid-template-columns:75px 1fr}.side{padding:18px 10px}.brand>div:last-child,.navlabel,.nav button .txt,.sidebottom{display:none}.nav button{justify-content:center;font-size:19px}.brand{justify-content:center}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.app{display:block}.side{position:sticky;top:0;z-index:5;height:auto;padding:8px 10px;border-right:0;border-bottom:1px solid var(--line);flex-direction:row;align-items:center;gap:12px}.brand>div:last-child{display:block}.brand .logo{width:33px;height:33px}.nav{display:flex;overflow:auto;margin-left:auto}.nav button{padding:9px 11px}.nav button .txt{display:none}main{padding:22px 14px}.top{margin-bottom:22px}.profile .username{display:none}.grid,.rowcards{grid-template-columns:1fr}.sectionhead{margin-top:22px}.stat .num{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+ <div class="brand"><div class="logo">S</div><div>DEVELOP<small>CONTROL PANEL</small></div></div>
+ <div><div class="navlabel">Workspace</div><nav class="nav">
+ <button class="active" data-page="overview"><span>▦</span><span class="txt">Overview</span></button>
+ <button data-page="autoroles"><span>♟</span><span class="txt">Autoroles</span></button>
+ <button data-page="welcome"><span>✦</span><span class="txt">Welcome</span></button>
+ <button data-page="server"><span>⚙</span><span class="txt">Server settings</span></button>
+ </nav></div>
+ <div class="sidebottom"><div style="font-weight:700;font-size:13px">Bot connection</div><div class="tiny" style="margin-top:5px">Demo mode · not connected</div></div>
+</aside>
+<main>
+ <div class="top"><div class="crumb">Workspace / <span id="crumb">Overview</span></div><div class="profile"><div class="avatar">D</div><span class="username">Demo user</span><a class="btn" style="padding:6px 9px;text-decoration:none" href="/auth/discord">Login with Discord</a></div></div>
+ <section class="page active" id="overview">
+  <h1 class="h1">Welcome back 👋</h1><p class="sub">Manage your Discord server from one clean control panel.</p>
+  <div class="notice">Preview mode: this is a working UI demo. Discord login and live BDFD settings are not connected yet.</div>
+  <div class="grid">
+   <div class="card stat"><div><div class="label">Selected server</div><div class="num" style="font-size:20px">DEVELOP</div><div class="tiny">Demo server</div></div><div class="icon">◈</div></div>
+   <div class="card stat"><div><div class="label">Members</div><div class="num">1,284</div><div class="tiny">Sample number</div></div><div class="icon">♟</div></div>
+   <div class="card stat"><div><div class="label">Bot status</div><div class="num" style="font-size:20px;color:#f5c56b">Not connected</div><div class="tiny">Connect integration to go live</div></div><div class="icon">⌁</div></div>
+  </div>
+  <div class="sectionhead"><h2>Quick settings</h2><span class="pill">● Demo mode</span></div>
+  <div class="rowcards">
+   <div class="card feature"><div class="featureicon">♟</div><div><h3>Autoroles</h3><p>Choose roles to assign when a member joins.</p><button class="btn" onclick="showPage('autoroles')">Configure autoroles →</button></div></div>
+   <div class="card feature"><div class="featureicon">✦</div><div><h3>Welcome system</h3><p>Customize your welcome message and embed.</p><button class="btn" onclick="showPage('welcome')">Edit welcome →</button></div></div>
+  </div>
+  <div class="sectionhead"><h2>Choose a server</h2><button class="btn" onclick="toast('Server list appears after Discord OAuth is configured.')">＋ Add server</button></div>
+  <div class="card server"><div class="servericon">S</div><div style="flex:1"><h3>DEVELOP</h3><p>Example server · select after Discord login</p></div><span class="pill">Preview</span></div>
+ </section>
+ <section class="page" id="autoroles">
+  <h1 class="h1">Autoroles</h1><p class="sub">Automatically assign roles when someone joins your server.</p>
+  <div class="notice">These controls are a preview and do not change your BDFD bot yet.</div>
+  <div class="card">
+   <div class="setting"><div><strong>Enable autoroles</strong><span>Turn automatic role assignment on or off.</span></div><button class="switch on" aria-label="Toggle autoroles" onclick="toggle(this)"></button></div>
+   <div class="field"><label>Role to assign</label><select id="role"><option>Member</option><option>Verified</option><option>Newcomer</option><option>Community</option></select></div>
+   <div class="field"><label>Role ID (optional demo field)</label><input placeholder="Paste Discord role ID"></div>
+   <div class="field"><label>When should it apply?</label><select><option>When a member joins</option><option>After verification</option></select></div>
+   <button class="btn primary" onclick="toast('Preview saved locally for this page only.')">Save autorole settings</button>
+  </div>
+ </section>
+ <section class="page" id="welcome">
+  <h1 class="h1">Welcome system</h1><p class="sub">Build a welcome message for new members.</p>
+  <div class="notice">Preview only. A live welcome embed needs a connected bot integration.</div>
+  <div class="rowcards">
+   <div class="card">
+    <div class="field"><label>Welcome channel</label><select><option>#welcome</option><option>#general</option><option>#introductions</option></select></div>
+    <div class="field"><label>Embed title</label><input id="welTitle" value="𝐇𝐞𝐲 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 𝐓𝐡𝐞 𝐒𝐞𝐫𝐯𝐞𝐫 💙" oninput="preview()"></div>
+    <div class="field"><label>Message</label><textarea id="welBody" oninput="preview()">Welcome {user}!
+You are member #{member_count}.
+Please read the server rules and enjoy your stay!</textarea></div>
+    <div class="field"><label>Accent color</label><select id="welColor" onchange="preview()"><option value="#6d5dfc">Sapphire purple</option><option value="#00d9b4">Mint cyan</option><option value="#e14d76">Rose red</option><option value="#f2a84b">Amber</option></select></div>
+    <button class="btn primary" onclick="toast('Preview updated. Live bot connection is not set up.')">Save welcome settings</button>
+   </div>
+   <div class="card"><div class="tiny" style="margin-bottom:10px">EMBED PREVIEW</div><div id="embed" style="border-left:4px solid #6d5dfc;background:#0d1119;border-radius:7px;padding:15px"><div id="ptitle" style="font-weight:800;margin-bottom:12px">𝐇𝐞𝐲 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 𝐓𝐡𝐞 𝐒𝐞𝐫𝐯𝐞𝐫 💙</div><div id="pbody" style="white-space:pre-wrap;color:#c2c9d6;font-size:13px">Welcome {user}!
+You are member #{member_count}.
+Please read the server rules and enjoy your stay!</div><div style="margin-top:15px;border-radius:50%;background:linear-gradient(135deg,#6d5dfc,#40d9d0);width:58px;height:58px;display:grid;place-items:center;font-size:22px">👤</div></div><p class="tiny">Member avatar and live member count require real Discord data.</p></div>
+  </div>
+ </section>
+ <section class="page" id="server">
+  <h1 class="h1">Server settings</h1><p class="sub">Manage the dashboard appearance and server connection.</p>
+  <div class="notice">A public deployment needs a domain/hosting, Discord OAuth credentials, and a backend. Never paste your bot token into a public page.</div>
+  <div class="card">
+   <div class="field"><label>Dashboard name</label><input value="DEVELOP Control Panel"></div>
+   <div class="field"><label>Theme</label><select><option>Dark · Sapphire inspired</option><option>Midnight cyan</option><option>Dark rose</option></select></div>
+   <div class="setting"><div><strong>Public dashboard</strong><span>Allow users to open the website.</span></div><button class="switch on" onclick="toggle(this)"></button></div>
+   <div class="setting"><div><strong>Discord OAuth</strong><span>Not configured yet.</span></div><span class="pill" style="color:#f5c56b;background:#292316">Needs setup</span></div>
+   <button class="btn primary" style="margin-top:16px" onclick="toast('Branding preview saved locally only.')">Save appearance</button>
+  </div>
+ </section>
+ <div class="footer">DEVELOP Control Panel · Original community dashboard concept · Demo data only</div>
+</main></div>
+<div class="toast" id="toast"></div>
+<script>
+fetch('/api/me').then(r=>r.ok?r.json():null).then(data=>{if(data&&data.loggedIn){const p=document.querySelector('.profile');const avatar=p.querySelector('.avatar');avatar.textContent='';if(data.user.avatar){avatar.style.backgroundImage=`url(${data.user.avatar})`;avatar.style.backgroundSize='cover'}else{avatar.textContent=(data.user.global_name||data.user.username||'D')[0].toUpperCase()}p.querySelector('.username').textContent=data.user.global_name||data.user.username;p.querySelector('a.btn').textContent='Logged in';p.querySelector('a.btn').href='#';const notice=document.querySelector('.notice');if(notice)notice.textContent='Discord login connected. Server list is available from /api/me. Live BDFD settings are not connected yet.'}}).catch(()=>{});
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));document.getElementById('crumb').textContent=({overview:'Overview',autoroles:'Autoroles',welcome:'Welcome',server:'Server settings'})[id]||'Overview';window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function toggle(el){el.classList.toggle('on')}
+let timer;function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(timer);timer=setTimeout(()=>t.style.display='none',3000)}
+function preview(){document.getElementById('ptitle').textContent=document.getElementById('welTitle').value;document.getElementById('pbody').textContent=document.getElementById('welBody').value;document.getElementById('embed').style.borderLeftColor=document.getElementById('welColor').value}
+</script>
+</body>
+</html>
