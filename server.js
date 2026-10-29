@@ -22,7 +22,12 @@ app.get('/auth/discord', (req,res) => {
   url.searchParams.set('scope', 'identify guilds');
   req.session.oauthState = require('crypto').randomBytes(24).toString('hex');
   url.searchParams.set('state', req.session.oauthState);
+  req.session.save((err) => {
+  if (err) {
+    return res.status(500).send('Session save failed. Please try again.');
+  }
   res.redirect(url.toString());
+});
 });
 app.get('/auth/discord/callback', async (req,res) => {
   if (missing.length) return res.status(503).send('OAuth is not configured.');
