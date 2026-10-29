@@ -24,7 +24,7 @@ app.get('/auth/discord', (req,res) => {
   url.searchParams.set('state', req.session.oauthState);
   req.session.save((err) => {
   if (err) {
-    return res.status(500).send('Session save failed. Please try again.');
+    return res.status(500).send('Login failed: ' + e.message);
   }
   res.redirect(url.toString());
 });
