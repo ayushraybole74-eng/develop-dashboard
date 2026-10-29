@@ -37,7 +37,8 @@ app.get('/auth/discord/callback', async (req,res) => {
     const tokenRes = await fetch('https://discord.com/api/oauth2/token', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:form});
     const token = await tokenRes.json();
     if (!tokenRes.ok) {
-  console.error('Discord OAuth error:', token.error, token.error_description);
+  console.error('Discord OAuth status:', tokenRes.status);
+  console.error('Discord OAuth response:', await tokenRes.text());
   return res.status(400).send('Discord token exchange failed. Check Render logs.');
     }
     const headers = {Authorization:`Bearer ${token.access_token}`};
