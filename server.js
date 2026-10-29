@@ -36,7 +36,10 @@ app.get('/auth/discord/callback', async (req,res) => {
     const form = new URLSearchParams({client_id:process.env.DISCORD_CLIENT_ID, client_secret:process.env.DISCORD_CLIENT_SECRET, grant_type:'authorization_code', code:req.query.code, redirect_uri:process.env.DISCORD_REDIRECT_URI});
     const tokenRes = await fetch('https://discord.com/api/oauth2/token', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:form});
     const token = await tokenRes.json();
-    if (!tokenRes.ok) return res.status(400).send('Discord token exchange failed. Check OAuth settings and redirect URI.');
+    if (!tokenRes.ok) {
+  console.error('Discord OAuth error:', token.error, token.error_description);
+  return res.status(400).send('Discord token exchange failed. Check Render logs.');
+    }
     const headers = {Authorization:`Bearer ${token.access_token}`};
     const [userRes, guildRes] = await Promise.all([fetch('https://discord.com/api/users/@me',{headers}), fetch('https://discord.com/api/users/@me/guilds',{headers})]);
     if (!userRes.ok || !guildRes.ok) return res.status(400).send('Could not read your Discord profile/server list. Please try again.');
